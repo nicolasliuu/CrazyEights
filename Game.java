@@ -140,7 +140,10 @@ public class Game {
       // card to each player in player order, then a third card, etc., 
       // until each player has the appropriate number of cards 
 
-
+      
+      for (int i = 0; i < handSize; i++) {
+         for ()
+      }
 
 
 

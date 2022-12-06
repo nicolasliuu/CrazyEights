@@ -42,13 +42,21 @@ public class Hand extends CardCollection {
          throw new IllegalArgumentException("invalid card index in Hand");
       }
       
+      // Get the card at the specified index, i
+      Card cardToReturn = this.cards[i];
 
+      // Shift the cards in the hand to fill the gap left by the removed card
+      // Starting from index i, shift each card one position to the left.
+      for (int j = i; j < this.size() - 1; j++) {
+         this.cards[j] = this.cards[j + 1];
+      }
 
-      // TODO: implement the rest of this method
-      return null; // Replace this stub
+      // Remove the last card in the array and decrement the number of cards
 
-
-
+      this.cards[this.size() - 1] = null;
+      this.numFilled--;
+      
+      return cardToReturn; 
    }
 
 
