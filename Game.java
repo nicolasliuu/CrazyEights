@@ -142,12 +142,11 @@ public class Game {
 
       
       for (int i = 0; i < handSize; i++) {
-         for ()
+         for (int j = 0; j < this.players.length; j++) {
+            players[j].addCard(drawPile.draw());
+         }
       }
 
-
-
-   
       // Move top card from draw pile into discard pile, face up
       discardPile = new CardCollection("DiscardPile");
       discardPile.addCard(drawPile.discard());
@@ -202,12 +201,24 @@ public class Game {
     */
    private Player nextPlayer() {
 
+      // assuming 12 is the integer representation for queen
+      if (discardPile.top().getRank() == 12) {
+         displaySkippedPlayer();
+         input.nextLine();
+         displayGameState();
+         // skips the player
+         current++;
+      }
 
+      // Current player in array is next player
+      current++;
 
-      // TODO: implement me
-      return null; // Replace this stub
+      // Goes to first player if current player is last player
+      if (current >= players.length) {
+         current = 0;
+      }
 
-
+      return players[current]; 
    }
 
 
@@ -240,12 +251,8 @@ public class Game {
     */
    public static boolean cardMatches(Card card1, Card card2) {
 
-
-
-      //TODO: implement me
-      return false; // Replace this stub
-      
- 
+      return (card1.getRank() == card2.getRank() || card1.getSuit() == 
+         card2.getSuit() || card1.getRank() == 8 || card2.getRank() == 8) 
  
    }
 
