@@ -52,13 +52,12 @@ public abstract class Player {
     *         and false otherwise
     */
    public boolean hasPlayableCard(Card top) {
-
-
-
-      // TODO: implement me
-      return false;  // Replace this stub
-
-
+      for (int i = 0; i < this.hand.size(); i++) {
+         if (Game.cardMatches(top, this.hand.getCard(i))) {
+            return true;
+         }
+      }
+      return false;
    }
 
 

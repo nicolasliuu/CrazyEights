@@ -50,11 +50,37 @@ public class User extends Player {
     * @return the card played by the user
     */
    public Card makeMove(Game crazyEight, Card top) {
+      Card card = null;
+      boolean loop = true;
+      int cardNum;
 
+      while (loop) {
+         System.out.print(SELECT_CARD_FROM_HAND_PROMPT);
+         cardNum = input.nextInt();
+         if (cardNum < 0 || cardNum > hand.size()) {
+            continue;
+         }
+         if (!hasPlayableCard(top) && cardNum == 0) {
+            card = crazyEight.draw();
+            hand.addCard(card);
+            System.out.println("*** " + name + " draws " + card);
+            System.out.print(getHand());
+            continue;
+         }
+         if (hasPlayableCard(top) && cardNum == 0) {
+            System.out.print(NO_DRAW_IF_HAVE_PLAYABLE_CARD_MESSAGE);
+            continue;
+         }
+         card = hand.getCard(cardNum - 1);
+         if (hasPlayableCard(top) && Game.cardMatches(card, top)) {
+            return hand.discard(cardNum - 1);
+         }
+         else if (hasPlayableCard(top) && !Game.cardMatches(card, top)) {
+            System.out.print(CARD_DOES_NOT_MATCH_MESSAGE);
+         }
+      }
 
-
-      // TODO: implement me
-      return null; // Replace this stub
+      return card; // Replace this stub
 
 
    }

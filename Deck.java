@@ -17,26 +17,23 @@ public class Deck extends CardCollection {
     * 52 cards in standard order, using the generic label "Deck".
     */
    public Deck() {
-      // initializes the list of cards
-      this.cards = new Card[MAXSIZE];
-      this.numFilled = 0;
 
-      // is it easier to do super("Deck"); 
-      
+      // initializes the deck of cards
+      super("Deck");
+
       // can also make the loop without making new suit and ranks arrays.
 
       // creates a full deck of cards in standard order
       int[] suits = {1, 2, 3, 4};
       int[] ranks = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
 
-      for (int i = 1; i < suits.length; i++) {
+      for (int i = 0; i < suits.length; i++) {
          for (int j = 0; j < ranks.length; j++) {
             this.cards[numFilled] = new Card(ranks[j], suits[i]);
             numFilled++;
          }
       }
 
-      this.label = "Deck";
    }
    
    
@@ -48,8 +45,7 @@ public class Deck extends CardCollection {
    public Deck(String label) {
 
       // initializes the list of cards
-      this.cards = new Card[MAXSIZE];
-      this.numFilled = 0;
+      super(label);
 
       // is it easier to do super(label); 
 
@@ -57,16 +53,12 @@ public class Deck extends CardCollection {
       int[] suits = {1, 2, 3, 4};
       int[] ranks = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
 
-      for (int i = 1; i < suits.length; i++) {
+      for (int i = 0; i < suits.length; i++) {
          for (int j = 0; j < ranks.length; j++) {
-            this.cards[numFilled] = new Card(ranks[j], suits[i];
+            this.cards[numFilled] = new Card(ranks[j], suits[i]);
             numFilled++;
          }
       }
-
-      this.label = label;
-
-
 
    }
 
