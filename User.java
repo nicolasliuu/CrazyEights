@@ -80,8 +80,7 @@ public class User extends Player {
          }
       }
 
-      return card; // Replace this stub
-
+      return card; 
 
    }
 
