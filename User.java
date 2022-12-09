@@ -57,6 +57,7 @@ public class User extends Player {
       while (loop) {
          System.out.print(SELECT_CARD_FROM_HAND_PROMPT);
          cardNum = input.nextInt();
+         input.nextLine();
          if (cardNum < 0 || cardNum > hand.size()) {
             continue;
          }
